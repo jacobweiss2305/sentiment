@@ -11,7 +11,10 @@ RUN apt-get update && apt-get install -y git
 COPY requirements.txt app/requirements.txt
 
 #install all requirements in requirements.txt
-RUN pip install -r app/requirements.txt
+RUN pip install --upgrade pip && pip install -r app/requirements.txt
+
+#Install NLTK Word packages
+RUN python -m nltk.downloader wordnet omw-1.4
 
 #Copy all files in current directory into app directory
 COPY . /app
