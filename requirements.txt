@@ -1,0 +1,11 @@
+pandas
+streamlit
+streamlit-aggrid
+matplotlib
+seaborn
+tweepy
+gensim
+nltk
+vaderSentiment
+scikit-learn
+python-dotenv
