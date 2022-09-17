@@ -49,7 +49,7 @@ def search_twitter(args):
                 break
             searched_tweets.extend(new_tweets)
             last_id = new_tweets[-1].id
-        except tweepy.errors.TweepError as e:
+        except Exception as e:
             break
     if searched_tweets:
         return searched_tweets
