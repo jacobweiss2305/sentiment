@@ -6,8 +6,6 @@ import re
 import gensim
 from nltk.stem import WordNetLemmatizer
 import nltk
-nltk.download('wordnet')
-nltk.download('omw-1.4')
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 import streamlit as st
@@ -39,18 +37,14 @@ def sentiment_vader(sentence):
   
     return overall_sentiment
 
-def search_twitter(query, max_tweets, language, twitter_type):
+def search_twitter(args):
     # Search for tweets
     searched_tweets = []
     last_id = -1
-    while len(searched_tweets) < max_tweets:
-        count = max_tweets - len(searched_tweets)
+    while len(searched_tweets) < args['count']:
         try:
-            new_tweets = api.search_tweets(q=query, 
-                                           count=count, 
-                                           max_id=str(last_id - 1), 
-                                           lang=language, 
-                                           result_type=twitter_type)
+            args['max_id'] = str(last_id - 1)
+            new_tweets = api.search_tweets(**args)
             if not new_tweets:
                 break
             searched_tweets.extend(new_tweets)
@@ -165,4 +159,4 @@ def download_csv_button(df, list_name):
        f"{name}.csv",
        "text/csv",
        key = f'download-csv-{name}'
-    )    
+    )
