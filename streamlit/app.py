@@ -43,8 +43,7 @@ with st.sidebar.form(key ='Form1'):
     filter_replies = st.selectbox("Filter replies", [True, False])
 
     start_date = st.date_input("Start date", datetime.today())
-    days_ago = st.slider("Days ago", 1, 30, value=15)
-    end_date = st.date_input("End date", (datetime.today() - timedelta(days=days_ago)))
+    end_date = st.date_input("End date", (datetime.today() - timedelta(days=1)))
 
 # set query
 base = []
