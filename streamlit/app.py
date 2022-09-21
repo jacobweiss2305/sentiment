@@ -122,6 +122,7 @@ if tweets:
         sns.barplot(x=sentiment_by_location['Location State'], y=sentiment_by_location['Count'], hue=sentiment_by_location['Sentiment'], palette=PALETTE)    
         plt.title("Sentiment by location")
         plt.legend(loc='upper right')
+        plt.xticks(rotation=30)
         st.pyplot(fig)
 
     with col1:
